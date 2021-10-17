@@ -1,14 +1,15 @@
 package com.example.blog_engine.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "tags")
+@Data
 public class Tags {
-
-    public Tags(){
-    }
 
     @Id
     @NotNull
@@ -17,4 +18,7 @@ public class Tags {
 
     @NotNull
     private String name;
+
+    @ManyToMany(mappedBy = "tagsSet")
+    Set<Posts> posts;
 }

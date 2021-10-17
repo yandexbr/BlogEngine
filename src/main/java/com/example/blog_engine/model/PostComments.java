@@ -1,15 +1,15 @@
 package com.example.blog_engine.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
 @Table(name = "post_comments")
+@Data
 public class PostComments {
-
-    public PostComments(){
-    }
 
     @Id
     @NotNull
@@ -33,4 +33,12 @@ public class PostComments {
 
     @NotNull
     private String text;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    Users users;
+
+    @ManyToOne
+    @JoinColumn(name = "posts_id")
+    Posts posts;
 }

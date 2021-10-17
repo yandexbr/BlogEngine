@@ -1,15 +1,16 @@
 package com.example.blog_engine.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "posts")
+@Data
 public class Posts {
-
-    public Posts() {
-    }
 
     @Id
     @NotNull
@@ -44,4 +45,23 @@ public class Posts {
     @NotNull
     @Column(name = "view_count")
     private Integer viewCount;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    Users users;
+
+    @OneToMany
+    @JoinColumn(name = "posts")
+    Set<PostVotes> postVotes;
+
+    @OneToMany
+    @JoinColumn(name = "posts")
+    Set<PostComments> postComments;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tag2post",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    Set<Tags> tagsSet;
 }

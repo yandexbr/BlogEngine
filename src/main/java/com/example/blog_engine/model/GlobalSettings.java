@@ -1,14 +1,14 @@
 package com.example.blog_engine.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "global_settings")
+@Data
 public class GlobalSettings {
-
-    public GlobalSettings(){
-    }
 
     @Id
     @NotNull

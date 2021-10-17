@@ -1,15 +1,15 @@
 package com.example.blog_engine.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
 @Table(name = "captcha_codes")
+@Data
 public class CaptchaCodes {
-
-    public CaptchaCodes(){
-    }
 
     @Id
     @NotNull

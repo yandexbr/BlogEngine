@@ -1,16 +1,18 @@
 package com.example.blog_engine.model;
 
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@Data
 public class Users {
-
-    public Users() {}
 
     @Id
     @NotNull
@@ -44,5 +46,15 @@ public class Users {
     @NotNull
     private String photo;
 
+    @OneToMany()
+    @JoinColumn(name = "users")
+    private Set<Posts> posts;
 
+    @OneToMany()
+    @JoinColumn(name = "users")
+    private Set<PostComments> postComments;
+
+    @OneToMany()
+    @JoinColumn(name = "users")
+    private Set<PostVotes> postVotes;
 }

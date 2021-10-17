@@ -1,13 +1,14 @@
 package com.example.blog_engine.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Data
+@Table(name = "tag2post")
 public class Tag2post {
-
-    public Tag2post(){
-    }
 
     @Id
     @NotNull
